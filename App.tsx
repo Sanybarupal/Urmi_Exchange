@@ -1,14 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Navbar from './components/Navbar';
-import LandingPage from './pages/LandingPage';
-import DashboardPage from './pages/DashboardPage';
-import MarketsPage from './pages/MarketsPage';
-import TradePage from './pages/TradePage';
-import WalletPage from './pages/WalletPage';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+import Navbar from './components/Navbar.tsx';
+import LandingPage from './pages/LandingPage.tsx';
+import DashboardPage from './pages/DashboardPage.tsx';
+import MarketsPage from './pages/MarketsPage.tsx';
+import TradePage from './pages/TradePage.tsx';
+import WalletPage from './pages/WalletPage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
+import RegisterPage from './pages/RegisterPage.tsx';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);

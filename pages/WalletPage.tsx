@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { MOCK_WALLET } from '../constants';
+import { MOCK_WALLET } from '../constants.tsx';
 
 const WalletPage: React.FC = () => {
   const totalBalance = MOCK_WALLET.reduce((acc, curr) => acc + curr.valueInUsd, 0);

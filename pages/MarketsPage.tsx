@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { INITIAL_CRYPTO_DATA } from '../constants';
+import { INITIAL_CRYPTO_DATA } from '../constants.tsx';
 
 const MarketsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');

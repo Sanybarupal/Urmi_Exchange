@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { INITIAL_CRYPTO_DATA } from '../constants';
+import { INITIAL_CRYPTO_DATA } from '../constants.tsx';
 
 const LandingPage: React.FC = () => {
   return (

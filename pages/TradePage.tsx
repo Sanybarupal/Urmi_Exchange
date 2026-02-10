@@ -2,8 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { AreaChart, Area, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
-import { INITIAL_CRYPTO_DATA } from '../constants';
-import { OrderBookEntry } from '../types';
+import { INITIAL_CRYPTO_DATA } from '../constants.tsx';
+import { OrderBookEntry } from '../types.ts';
 
 const TradePage: React.FC = () => {
   const { symbol } = useParams<{ symbol: string }>();
@@ -131,7 +131,7 @@ const TradePage: React.FC = () => {
                 ))}
               </div>
               <div className="py-2 text-center border-y border-slate-200 dark:border-slate-800 mb-4">
-                <span className="text-xl font-bold ${asset.change24h >= 0 ? 'text-emerald-500' : 'text-rose-500'}">{asset.price.toFixed(2)}</span>
+                <span className={`text-xl font-bold ${asset.change24h >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>{asset.price.toFixed(2)}</span>
               </div>
               <div className="flex flex-col">
                 {bids.map((bid, i) => (
