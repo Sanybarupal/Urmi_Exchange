@@ -36,9 +36,7 @@ const DashboardPage: React.FC = () => {
         </div>
       </header>
 
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Main Chart */}
         <div className="lg:col-span-2 bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
           <div className="flex justify-between items-center mb-6">
             <div>
@@ -75,7 +73,6 @@ const DashboardPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Portfolio Allocation */}
         <div className="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
           <h3 className="text-xl font-bold mb-6">Allocation</h3>
           <div className="h-56 w-full relative">
@@ -116,7 +113,6 @@ const DashboardPage: React.FC = () => {
         </div>
       </div>
 
-      {/* Recent Activity */}
       <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
         <div className="p-6 flex justify-between items-center border-b border-slate-200 dark:border-slate-800">
           <h3 className="text-xl font-bold">Recent Transactions</h3>

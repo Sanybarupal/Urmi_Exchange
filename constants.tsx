@@ -1,5 +1,5 @@
 
-import { CryptoAsset, Transaction, WalletBalance } from './types';
+import { CryptoAsset, Transaction, WalletBalance } from './types.ts';
 
 export const INITIAL_CRYPTO_DATA: CryptoAsset[] = [
   { id: '1', symbol: 'BTC', name: 'Bitcoin', price: 64230.45, change24h: 2.4, volume24h: '32.1B', marketCap: '1.2T', color: '#F7931A' },
