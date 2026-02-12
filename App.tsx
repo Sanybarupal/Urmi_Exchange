@@ -2,17 +2,17 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Navbar from './components/Navbar.tsx';
+import LoginModal from './components/LoginModal.tsx';
 import LandingPage from './pages/LandingPage.tsx';
 import DashboardPage from './pages/DashboardPage.tsx';
 import MarketsPage from './pages/MarketsPage.tsx';
 import TradePage from './pages/TradePage.tsx';
 import WalletPage from './pages/WalletPage.tsx';
-import LoginPage from './pages/LoginPage.tsx';
-import RegisterPage from './pages/RegisterPage.tsx';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -23,6 +23,8 @@ const App: React.FC = () => {
   }, [isDarkMode]);
 
   const toggleTheme = () => setIsDarkMode(!isDarkMode);
+  const openLoginModal = () => setIsLoginModalOpen(true);
+  const closeLoginModal = () => setIsLoginModalOpen(false);
 
   return (
     <Router>
@@ -31,25 +33,30 @@ const App: React.FC = () => {
           isDarkMode={isDarkMode} 
           toggleTheme={toggleTheme} 
           isAuthenticated={isAuthenticated} 
-          setIsAuthenticated={setIsAuthenticated} 
+          setIsAuthenticated={setIsAuthenticated}
+          onOpenLogin={openLoginModal}
         />
         
+        <LoginModal 
+          isOpen={isLoginModalOpen} 
+          onClose={closeLoginModal} 
+          setIsAuthenticated={setIsAuthenticated} 
+        />
+
         <main className="pt-16 pb-12">
           <Routes>
-            <Route path="/" element={<LandingPage />} />
-            <Route path="/login" element={<LoginPage setIsAuthenticated={setIsAuthenticated} />} />
-            <Route path="/register" element={<RegisterPage setIsAuthenticated={setIsAuthenticated} />} />
+            <Route path="/" element={<LandingPage onOpenLogin={openLoginModal} />} />
             
             <Route 
               path="/dashboard" 
-              element={isAuthenticated ? <DashboardPage /> : <Navigate to="/login" />} 
+              element={isAuthenticated ? <DashboardPage /> : <Navigate to="/" />} 
             />
             <Route path="/markets" element={<MarketsPage />} />
             <Route path="/trade/:symbol" element={<TradePage />} />
             <Route path="/trade" element={<Navigate to="/trade/BTC" />} />
             <Route 
               path="/wallet" 
-              element={isAuthenticated ? <WalletPage /> : <Navigate to="/login" />} 
+              element={isAuthenticated ? <WalletPage /> : <Navigate to="/" />} 
             />
           </Routes>
         </main>

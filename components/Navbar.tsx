@@ -7,9 +7,16 @@ interface NavbarProps {
   toggleTheme: () => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (val: boolean) => void;
+  onOpenLogin: () => void;
 }
 
-const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme, isAuthenticated, setIsAuthenticated }) => {
+const Navbar: React.FC<NavbarProps> = ({ 
+  isDarkMode, 
+  toggleTheme, 
+  isAuthenticated, 
+  setIsAuthenticated,
+  onOpenLogin
+}) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -86,8 +93,18 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme, isAuthenticate
               </div>
             ) : (
               <div className="flex items-center space-x-3">
-                <Link to="/login" className="px-4 py-2 text-sm font-semibold hover:text-indigo-600 transition-colors">Sign In</Link>
-                <Link to="/register" className="px-5 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 shadow-lg shadow-indigo-600/20 transition-all active:scale-95">Get Started</Link>
+                <button 
+                  onClick={onOpenLogin}
+                  className="px-4 py-2 text-sm font-semibold hover:text-indigo-600 transition-colors"
+                >
+                  Sign In
+                </button>
+                <button 
+                  onClick={onOpenLogin}
+                  className="px-5 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 shadow-lg shadow-indigo-600/20 transition-all active:scale-95"
+                >
+                  Get Started
+                </button>
               </div>
             )}
             

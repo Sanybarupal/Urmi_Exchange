@@ -3,7 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { INITIAL_CRYPTO_DATA } from '../constants.tsx';
 
-const LandingPage: React.FC = () => {
+interface LandingPageProps {
+  onOpenLogin: () => void;
+}
+
+const LandingPage: React.FC<LandingPageProps> = ({ onOpenLogin }) => {
   return (
     <div className="relative overflow-hidden">
       {/* Background Decorative Elements */}
@@ -35,12 +39,12 @@ const LandingPage: React.FC = () => {
               </p>
               
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
-                <Link 
-                  to="/register" 
+                <button 
+                  onClick={onOpenLogin}
                   className="w-full sm:w-auto px-8 py-4 bg-indigo-600 text-white font-bold rounded-2xl hover:bg-indigo-700 shadow-2xl shadow-indigo-600/30 transition-all transform hover:-translate-y-1 active:scale-95 text-center"
                 >
                   Get Started Free
-                </Link>
+                </button>
                 <Link 
                   to="/markets" 
                   className="w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 font-bold rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-800 transition-all text-center"
@@ -288,9 +292,12 @@ const LandingPage: React.FC = () => {
               </div>
               
               <div className="pt-4">
-                <Link to="/register" className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors inline-block">
+                <button 
+                  onClick={onOpenLogin}
+                  className="px-8 py-3 bg-indigo-600 text-white font-bold rounded-xl hover:bg-indigo-700 transition-colors inline-block"
+                >
                   Learn About Security
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -310,12 +317,18 @@ const LandingPage: React.FC = () => {
                  Join over 12 million people who trust Urmi Exchange for their financial future.
                </p>
                <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4 pt-4">
-                 <Link to="/register" className="w-full sm:w-auto px-10 py-5 bg-white text-indigo-600 font-extrabold rounded-2xl hover:bg-indigo-50 transition-all text-lg shadow-xl shadow-indigo-900/20">
+                 <button 
+                  onClick={onOpenLogin}
+                  className="w-full sm:w-auto px-10 py-5 bg-white text-indigo-600 font-extrabold rounded-2xl hover:bg-indigo-50 transition-all text-lg shadow-xl shadow-indigo-900/20"
+                 >
                    Create Free Account
-                 </Link>
-                 <Link to="/login" className="w-full sm:w-auto px-10 py-5 bg-indigo-500/30 text-white border border-white/30 font-extrabold rounded-2xl hover:bg-white/10 transition-all text-lg">
+                 </button>
+                 <button 
+                  onClick={onOpenLogin}
+                  className="w-full sm:w-auto px-10 py-5 bg-indigo-500/30 text-white border border-white/30 font-extrabold rounded-2xl hover:bg-white/10 transition-all text-lg"
+                 >
                    Log In Now
-                 </Link>
+                 </button>
                </div>
              </div>
           </div>
