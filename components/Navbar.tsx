@@ -7,15 +7,13 @@ interface NavbarProps {
   toggleTheme: () => void;
   isAuthenticated: boolean;
   setIsAuthenticated: (val: boolean) => void;
-  onOpenLogin: () => void;
 }
 
 const Navbar: React.FC<NavbarProps> = ({ 
   isDarkMode, 
   toggleTheme, 
   isAuthenticated, 
-  setIsAuthenticated,
-  onOpenLogin
+  setIsAuthenticated
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,6 +22,10 @@ const Navbar: React.FC<NavbarProps> = ({
   const handleLogout = () => {
     setIsAuthenticated(false);
     navigate('/');
+  };
+
+  const handleLogin = () => {
+    navigate('/login');
   };
 
   const isActive = (path: string) => location.pathname === path;
@@ -59,6 +61,7 @@ const Navbar: React.FC<NavbarProps> = ({
               <NavLink to="/trade" label="Exchange" />
               {isAuthenticated && <NavLink to="/wallet" label="Wallet" />}
               <NavLink to="/explorer" label="Explorer" />
+              <NavLink to="/institutional" label="Institutional" />
             </div>
           </div>
 
@@ -87,13 +90,7 @@ const Navbar: React.FC<NavbarProps> = ({
             ) : (
               <div className="flex items-center space-x-4">
                 <button 
-                  onClick={onOpenLogin}
-                  className="hidden sm:block px-6 py-3 text-sm font-extrabold text-slate-900 dark:text-white hover:text-indigo-600 transition-colors"
-                >
-                  Sign In
-                </button>
-                <button 
-                  onClick={onOpenLogin}
+                  onClick={handleLogin}
                   className="px-8 py-3 text-sm font-extrabold text-white bg-indigo-600 rounded-2xl hover:bg-indigo-700 shadow-xl shadow-indigo-600/20 transition-all active:scale-95"
                 >
                   Login
